@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>N-Queens Solver</title>
+    <style>
+        table{
+            border:solid black 5px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>N-Queens Solver</h1>
+    <form method="POST">
+        <label for="n_value">Enter the size of the chessboard (N ≥ 4):</label>
+        <input type="number" name="n_value" required>
+        <button type="submit">Solve</button>
+    </form>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+    {% if queen_solutions %}
+        <h2>Solutions:</h2>
+        {% for solution in queen_solutions %}
+            <table>
+                {% for row in solution %}
+                    <tr>
+                        {% for square in row %}
+                            <td>{{ square }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
